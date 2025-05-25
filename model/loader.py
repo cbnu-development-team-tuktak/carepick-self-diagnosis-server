@@ -5,7 +5,7 @@ import torch  # 텐서 및 모델 가중치 로딩용
 from transformers import BertTokenizer, BertForSequenceClassification  # 토크나이저 및 BERT 분류 모델
 
 # 체크포인트 경로 설정
-checkpoint_path = "model/disease_classifier/disease_classifier_epoch10.pt"  # 저장된 모델 가중치 경로
+checkpoint_path = "model/disease_classifier_epoch10.pt"  # 저장된 모델 가중치 경로
 model_name = "madatnlp/km-bert"  # 사용할 사전학습 BERT 모델명
 
 # 디바이스 설정 (GPU 우선)
