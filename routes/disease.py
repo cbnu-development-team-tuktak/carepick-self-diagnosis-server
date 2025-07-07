@@ -20,8 +20,8 @@ def extract_text_and_k():
 
     return text, k  # 둘 다 반환
 
-# /disease/mini 라우트 정의
-@disease_bp.route("/mini", methods=["POST"]) # POST 방식으로 /disease/mini 엔드포인트 등록
+# /disease 라우트 정의
+@disease_bp.route("", methods=["POST"]) # POST 방식으로 /disease 엔드포인트 등록
 def predict_disease_mini():
     text, k = extract_text_and_k()  # 사용자 입력 텍스트와 k 동시 추출
     if not text:  # 텍스트가 없거나 문자열이 아닌 경우

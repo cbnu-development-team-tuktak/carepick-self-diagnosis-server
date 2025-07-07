@@ -4,15 +4,20 @@ import torch  # 텐서 및 모델 가중치 로딩용
 # Transformers 관련 import
 from transformers import BertTokenizer, BertForSequenceClassification  # 토크나이저 및 BERT 분류 모델
 
+# Hugging Face Hub 관련 import
+from huggingface_hub import hf_hub_download # 모델 체크포인트 원격 다운로드용
+
 # 체크포인트 경로 설정
-checkpoint_path = "model/disease_classifier/disease_classifier_epoch10.pt"  # 저장된 모델 가중치 경로
-model_name = "madatnlp/km-bert"  # 사용할 사전학습 BERT 모델명
+repo_id = "cbnu-development-team-tuktak/disease-prediction-korean"
+filename = "disease_classifier_epoch10.pt"
+model_name = "madatnlp/km-bert"
 
 # 디바이스 설정 (GPU 우선)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # 학습 및 추론에 사용할 장치
 
 # 체크포인트 로드
-checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)  # 모델 가중치 및 라벨 인코더 로딩
+checkpoint_path = hf_hub_download(repo_id=repo_id, filename=filename)
+checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
 
 # 클래스 수 계산
 num_labels = len(checkpoint["label_encoder"].classes_)  # 분류할 클래스 수
