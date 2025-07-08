@@ -15,4 +15,4 @@ def create_app():
 # Flask 앱 실행 엔트리포인트
 if __name__ == "__main__":
     app = create_app() # Flask 앱 생성
-    app.run(host="0.0.0.0", port=5000) # 모든 IP에서 접근 가능하도록 서버 실행 (포트 5000)
+    app.run(host="0.0.0.0", port=10000) # 모든 IP에서 접근 가능하도록 서버 실행 (포트 10000)
